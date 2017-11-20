@@ -1,0 +1,7 @@
+.tip {
+  user-select: none;
+  cursor: default;
+  text-transform: uppercase;
+  color: #eee;
+  font-size: 1.2em;
+}

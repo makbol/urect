@@ -1,0 +1,16 @@
+.rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rect-dimension {
+  user-select: none;
+  cursor: default;
+  color: #eee;
+  font-size: 0.6em;
+}
