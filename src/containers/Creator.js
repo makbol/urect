@@ -30,7 +30,7 @@ class Creator extends React.Component {
   }
 
   onMouseDown(e) {
-    if(this.props.limit.width > 0 || this.limit.height > 0) {
+    if(this.props.limit.width > 0 && this.props.limit.height > 0) {
       this.setState({
         isDragging: true,
         rectStyle: {
