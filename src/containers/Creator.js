@@ -17,10 +17,8 @@ class Creator extends React.Component {
   }
 
   getRandomHexColor() {
-    const colorBlackList = ['#ffffff'];
     // Credits https://www.paulirish.com/2009/random-hex-color-code-snippets/
-    const hexColor = '#'+Math.floor(Math.random()*16777215).toString(16);
-    return colorBlackList.some(color => color === hexColor) ? this.getRandomHexColor() : hexColor;
+    return '#'+Math.floor(Math.random()*16777215).toString(16);
   }
 
   hideTip() {
@@ -32,14 +30,16 @@ class Creator extends React.Component {
   }
 
   onMouseDown(e) {
-    this.setState({
-      isDragging: true,
-      rectStyle: {
-        x: e.pageX,
-        y: e.pageY,
-        bg: this.getRandomHexColor()
-      }
-    });
+    if(this.props.limit.width > 0 || this.limit.height > 0) {
+      this.setState({
+        isDragging: true,
+        rectStyle: {
+          x: e.pageX,
+          y: e.pageY,
+          bg: this.getRandomHexColor()
+        }
+      });
+    }
   }
 
   onMouseMove(e) {
@@ -48,8 +48,12 @@ class Creator extends React.Component {
       const height = e.pageY - this.state.rectStyle.y;
 
       if(width > 0 && height > 0) {
+        const rectStyle = Object.assign({}, this.state.rectStyle, {
+          width: Math.min(this.props.limit.width, width),
+          height: Math.min(this.props.limit.height, height),
+        });
         this.setState({
-          rectStyle: Object.assign({}, this.state.rectStyle, {width, height}),
+          rectStyle,
           showRect: true
         });
       }
