@@ -39,7 +39,7 @@ class Creator extends React.Component {
       const width = e.pageX - this.state.rectStyle.x;
       const height = e.pageY - this.state.rectStyle.y;
 
-      if(width > 0 && height > 0) {
+      if(width > 5 && height > 5) {
         const rectStyle = Object.assign({}, this.state.rectStyle, {
           width: Math.min(this.props.limit.width, width),
           height: Math.min(this.props.limit.height, height),
@@ -59,8 +59,9 @@ class Creator extends React.Component {
       rectStyle: null,
       showTip: false
     });
-    this.props.onAdd(this.state.rectStyle);
-    this.hideTip();
+    if(this.state.rectStyle.width > 5 && this.state.rectStyle.height > 5) {
+      this.props.onAdd(this.state.rectStyle);
+    }
   }
 
   render() {
