@@ -65,7 +65,6 @@ class Creator extends React.Component {
   }
 
   render() {
-    const rect = this.state.showRect ? <Rect {...this.state.rectStyle} /> : '';
     return (
       <div>
         <div className="creator"
@@ -73,7 +72,7 @@ class Creator extends React.Component {
           onMouseMove={this.onMouseMove}
           onMouseUp={this.onMouseUp}
           onDrag={this.onMouseDrag}>
-          {rect}
+          {this.state.showRect && <Rect {...this.state.rectStyle} />}
           <Tip showTip={this.state.showTip} />
         </div>
       </div>
