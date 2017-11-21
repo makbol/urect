@@ -21,14 +21,6 @@ class Creator extends React.Component {
     return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
   }
 
-  hideTip() {
-    if(this.state.showTip === true) {
-      this.setState({
-        showTip: false
-      });
-    }
-  }
-
   onMouseDown(e) {
     if(this.props.limit.width > 0 && this.props.limit.height > 0) {
       this.setState({
@@ -64,7 +56,8 @@ class Creator extends React.Component {
     this.setState({
       isDragging: false,
       showRect: false,
-      rectStyle: null
+      rectStyle: null,
+      showTip: false
     });
     this.props.onAdd(this.state.rectStyle);
     this.hideTip();
