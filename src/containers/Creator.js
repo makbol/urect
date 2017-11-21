@@ -17,8 +17,8 @@ class Creator extends React.Component {
   }
 
   getRandomHexColor() {
-    // Credits https://www.paulirish.com/2009/random-hex-color-code-snippets/
-    return '#'+Math.floor(Math.random()*16777215).toString(16);
+    // Credits https://stackoverflow.com/a/5092846
+    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
   }
 
   hideTip() {
