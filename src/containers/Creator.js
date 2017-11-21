@@ -73,7 +73,7 @@ class Creator extends React.Component {
           onMouseUp={this.onMouseUp}
           onDrag={this.onMouseDrag}>
           {this.state.showRect && <Rect {...this.state.rectStyle} />}
-          <Tip showTip={this.state.showTip} />
+          {this.state.showTip && <Tip />}
         </div>
       </div>
     );
